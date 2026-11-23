@@ -1,0 +1,147 @@
+{
+  "entities": {
+    "UserPrivateProfile": {
+      "title": "UserPrivateProfile",
+      "description": "Private authenticated architect profile containing PII isolated under user private subcollection.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 254
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["uid", "email", "displayName", "createdAt", "updatedAt"]
+    },
+    "UserPreferences": {
+      "title": "UserPreferences",
+      "description": "Personal ULTRON calibration, callsign, home city, wake-word, theme accent color, and audio/core geometry preferences.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "callsign": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 48
+        },
+        "homeCity": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["architect", "tactical", "deep"]
+        },
+        "verbosity": {
+          "type": "string",
+          "enum": ["concise", "balanced", "detailed"]
+        },
+        "geometryMode": {
+          "type": "string",
+          "enum": ["unified", "topology", "exploded"]
+        },
+        "soundEnabled": {
+          "type": "boolean"
+        },
+        "idleHumEnabled": {
+          "type": "boolean"
+        },
+        "voiceEnabled": {
+          "type": "boolean"
+        },
+        "wakeWordEnabled": {
+          "type": "boolean"
+        },
+        "voiceNavEnabled": {
+          "type": "boolean"
+        },
+        "wakePhrase": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 48
+        },
+        "accentColor": {
+          "type": "string",
+          "minLength": 7,
+          "maxLength": 7,
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "animationMode": {
+          "type": "string",
+          "enum": ["standard", "atrial-fibrillation"]
+        },
+        "streamingSpeed": {
+          "type": "string",
+          "enum": ["instant", "cinematic"]
+        },
+        "voicePitch": {
+          "type": "string",
+          "enum": ["deep", "balanced", "clear"]
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "uid",
+        "callsign",
+        "homeCity",
+        "mode",
+        "verbosity",
+        "geometryMode",
+        "soundEnabled",
+        "idleHumEnabled",
+        "voiceEnabled",
+        "wakeWordEnabled",
+        "voiceNavEnabled",
+        "wakePhrase",
+        "accentColor",
+        "animationMode",
+        "streamingSpeed",
+        "voicePitch",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/private/{docId}": {
+      "schema": {
+        "$ref": "#/entities/UserPrivateProfile"
+      },
+      "description": "Stores isolated PII profile data readable and writable only by the verified owner."
+    },
+    "/users/{userId}/preferences/{prefId}": {
+      "schema": {
+        "$ref": "#/entities/UserPreferences"
+      },
+      "description": "Stores personal ULTRON calibration and personalization preferences owned by the authenticated user."
+    }
+  }
+}

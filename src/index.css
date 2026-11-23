@@ -1,0 +1,348 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Chakra Petch", sans-serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
+  --ultron-accent: #ef4444;
+  --ultron-accent-rgb: 239, 68, 68;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: #06070a;
+    color: #f1f5f9;
+    font-family: var(--font-sans);
+    letter-spacing: 0.01em;
+  }
+}
+
+.ultron-accent-bg {
+  background-color: var(--ultron-accent);
+}
+
+.ultron-accent-bg:hover {
+  background-color: color-mix(in srgb, var(--ultron-accent) 85%, #ffffff);
+}
+
+.ultron-accent-text {
+  color: var(--ultron-accent);
+}
+
+.ultron-accent-border {
+  border-color: rgba(var(--ultron-accent-rgb), 0.55);
+}
+
+.ultron-accent-surface {
+  border-color: rgba(var(--ultron-accent-rgb), 0.55);
+  background-color: rgba(var(--ultron-accent-rgb), 0.12);
+}
+
+.ultron-accent-focus:focus-within {
+  border-color: rgba(var(--ultron-accent-rgb), 0.6);
+}
+
+.ultron-accent-input:focus {
+  border-color: rgba(var(--ultron-accent-rgb), 0.6);
+}
+
+@keyframes ultron-ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ultron-ring-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes ultron-pulse-halo {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.42;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.85;
+  }
+}
+
+@keyframes ultron-wave-expand {
+  0% {
+    transform: scale(0.82);
+    opacity: 0.65;
+  }
+  100% {
+    transform: scale(1.42);
+    opacity: 0;
+  }
+}
+
+@keyframes ultron-pulse-afib {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.35;
+  }
+  11% {
+    transform: scale(1.13);
+    opacity: 0.96;
+  }
+  18% {
+    transform: scale(0.95);
+    opacity: 0.44;
+  }
+  26% {
+    transform: scale(1.09);
+    opacity: 0.88;
+  }
+  39% {
+    transform: scale(0.89);
+    opacity: 0.28;
+  }
+  58% {
+    transform: scale(0.94);
+    opacity: 0.38;
+  }
+  67% {
+    transform: scale(1.15);
+    opacity: 0.98;
+  }
+  78% {
+    transform: scale(0.97);
+    opacity: 0.52;
+  }
+  87% {
+    transform: scale(1.06);
+    opacity: 0.82;
+  }
+  100% {
+    transform: scale(0.92);
+    opacity: 0.35;
+  }
+}
+
+@keyframes ultron-wave-afib {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.72;
+  }
+  18% {
+    transform: scale(1.14);
+    opacity: 0.55;
+  }
+  29% {
+    transform: scale(1.04);
+    opacity: 0.78;
+  }
+  54% {
+    transform: scale(1.36);
+    opacity: 0.22;
+  }
+  72% {
+    transform: scale(1.24);
+    opacity: 0.48;
+  }
+  100% {
+    transform: scale(1.48);
+    opacity: 0;
+  }
+}
+
+@keyframes ultron-data-burst-shake {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  12% {
+    transform: translate3d(-7px, 4px, 0) rotate(-0.45deg);
+  }
+  26% {
+    transform: translate3d(8px, -5px, 0) rotate(0.5deg);
+  }
+  40% {
+    transform: translate3d(-6px, -4px, 0) rotate(-0.35deg);
+  }
+  56% {
+    transform: translate3d(6px, 4px, 0) rotate(0.3deg);
+  }
+  72% {
+    transform: translate3d(-4px, 2px, 0) rotate(-0.2deg);
+  }
+  86% {
+    transform: translate3d(2px, -2px, 0) rotate(0.1deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+@keyframes ultron-data-burst-flash {
+  0% {
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ultron-thinking-ellipsis {
+  0%,
+  75%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0) scale(0.84);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.12);
+  }
+}
+
+@keyframes ultron-cinematic-stream-pulse {
+  0%,
+  100% {
+    border-color: rgba(var(--ultron-accent-rgb), 0.22);
+    box-shadow: 0 0 0 1px rgba(var(--ultron-accent-rgb), 0.04);
+  }
+  50% {
+    border-color: rgba(var(--ultron-accent-rgb), 0.46);
+    box-shadow: 0 0 22px -6px rgba(var(--ultron-accent-rgb), 0.24);
+  }
+}
+
+.ultron-spin-slow {
+  animation: ultron-ring-spin 28s linear infinite;
+}
+
+.ultron-spin-medium {
+  animation: ultron-ring-spin-reverse 18s linear infinite;
+}
+
+.ultron-spin-fast {
+  animation: ultron-ring-spin 9s linear infinite;
+}
+
+.ultron-pulse-halo {
+  animation: ultron-pulse-halo 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.ultron-wave-expand {
+  animation: ultron-wave-expand 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.ultron-pulse-afib {
+  animation: ultron-pulse-afib 1.45s steps(1, end) infinite, ultron-pulse-afib 1.45s linear infinite;
+}
+
+.ultron-wave-afib {
+  animation: ultron-wave-afib 1.35s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.ultron-data-burst-shake {
+  animation: ultron-data-burst-shake 200ms cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  will-change: transform;
+}
+
+.ultron-data-burst-flash {
+  animation: ultron-data-burst-flash 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  background:
+    radial-gradient(
+      circle at 50% 34%,
+      rgba(var(--ultron-accent-rgb), 0.34) 0%,
+      rgba(var(--ultron-accent-rgb), 0.16) 38%,
+      rgba(var(--ultron-accent-rgb), 0.42) 100%
+    );
+  box-shadow:
+    inset 0 0 110px rgba(var(--ultron-accent-rgb), 0.78),
+    inset 0 0 28px rgba(255, 255, 255, 0.32);
+}
+
+.ultron-thinking-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background-color: var(--ultron-accent);
+  box-shadow:
+    0 0 8px rgba(var(--ultron-accent-rgb), 0.8),
+    0 0 14px rgba(var(--ultron-accent-rgb), 0.38);
+  animation: ultron-thinking-ellipsis 1.35s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+.ultron-thinking-dot-1 {
+  animation-delay: 0ms;
+}
+
+.ultron-thinking-dot-2 {
+  animation-delay: 180ms;
+}
+
+.ultron-thinking-dot-3 {
+  animation-delay: 360ms;
+}
+
+.ultron-thinking-dot-static {
+  animation: none !important;
+  opacity: 0.72;
+  transform: none;
+}
+
+.ultron-cinematic-stream-card {
+  animation: ultron-cinematic-stream-pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ultron-spin-slow,
+  .ultron-spin-medium,
+  .ultron-spin-fast,
+  .ultron-pulse-halo,
+  .ultron-wave-expand,
+  .ultron-pulse-afib,
+  .ultron-wave-afib,
+  .ultron-data-burst-shake,
+  .ultron-thinking-dot,
+  .ultron-cinematic-stream-card {
+    animation: none !important;
+  }
+
+  .ultron-thinking-dot {
+    opacity: 0.75;
+  }
+}
+
+/* Custom subtle dark scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--ultron-accent-rgb), 0.5);
+}

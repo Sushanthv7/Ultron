@@ -1,0 +1,6 @@
+{
+  "name": "ULTRON",
+  "description": "Central conversational intelligence hub featuring a glowing, pulsing circular neural core and real-time strategic reasoning.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
